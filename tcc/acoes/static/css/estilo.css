@@ -1,0 +1,51 @@
+body{
+	background-color: #cfd0d1;
+	margin-top: 56px;
+}
+div.topo{
+  margin-top: 56px;
+  padding-top: 20px;
+}
+div.sobre{
+	background-color: #aeb1b5;
+}
+div.sobre p{
+	text-align: justify;
+}
+div.servicos{
+	-webkit-transition: all 0.2s ease-in;
+}
+div.servicos:hover{
+	-webkit-transform: scale(1.1);
+}
+div#qualidade{
+	background-color: #aeb1b5;
+}
+div#qualidade h3, div#qualidade p{
+	text-align: center;
+}
+div.footer p{
+	color: white;
+	text-align: center;
+	font-size: 10pt;
+}
+a#back-to-top{
+  background-color: #696969;
+  opacity: 0.5;
+  transition: opacity 1s;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  padding: 8px 20px;
+  border-radius: 100%;
+  box-shadow: 1px 1px 4px black;
+  color: white;
+}
+a#back-to-top:hover{
+  opacity: 1;
+  box-shadow: 1px 1px 5px black;
+}
+a#back-to-top {
+  font-size: 24pt;
+  text-decoration: none;
+}
