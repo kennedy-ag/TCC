@@ -3,7 +3,7 @@ from django.shortcuts import render
 def index(request): 
     return render(request, 'index.html')
 
-def previsoes(request, codigo_da_acao):
+def acoes(request, codigo_da_acao):
 
 	from alpha_vantage.timeseries import TimeSeries
 	import json
@@ -63,4 +63,4 @@ def previsoes(request, codigo_da_acao):
 
 
 
-	return render(request, 'previsoes.html', {'dados': dados})
+	return render(request, 'acoes.html', {'dados': dados})
