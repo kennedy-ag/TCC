@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Previsões</title>
+    <title>Ações</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
     <link href="fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -88,7 +88,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Valor atual</div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Valor mais recente ({{dados.ultimo.0}})</div>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">R$ {{dados.fechamentos.0}}</div>
@@ -130,17 +130,17 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Resumo dos últimos 15 dias</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Resumo dos últimos {{dados.dias}} dias</h6>
                     <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        <p>Menu</p>
                       </a>
                       <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                        <div class="dropdown-header">Dropdown Header:</div>
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-header">Selecionar intervalo:</div>
+                        <a class="dropdown-item" href="http://localhost:8000/acoes/{{dados.codigo}}/7">7 dias</a>
+                        <a class="dropdown-item" href="http://localhost:8000/acoes/{{dados.codigo}}/15">15 dias</a>
+                        <a class="dropdown-item" href="http://localhost:8000/acoes/{{dados.codigo}}/30">30 dias</a>
+                        <a class="dropdown-item" href="http://localhost:8000/acoes/{{dados.codigo}}/60">60 dias</a>
                       </div>
                     </div>
                   </div>
@@ -160,7 +160,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Legenda</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Outras informações relevantes</h6>
                     
                   </div>
                   <!-- Card Body -->
@@ -169,28 +169,25 @@
                       <ul>
                         <li class="mb-3">
                           <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> AMZO34
+                            <i class="fas fa-circle text-primary"></i><strong>Volume mais recente: </strong>{{dados.volumes.0}}
                           </span>
                         </li>
                         <li class="mb-3">
                           <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> AAPL34
+                            <i class="fas fa-circle text-primary"></i><strong>Abertura: </strong>{{dados.aberturas.0}}
                           </span>
                         </li>
                         <li class="mb-3">
                           <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> ITUB4
+                            <i class="fas fa-circle text-primary"></i><strong>Alta: </strong>{{dados.altas.0}}
                           </span>
                         </li>
                         <li class="mb-3">
                           <span class="mr-2">
-                            <i class="fas fa-circle text-secondary"></i> BBDC3
+                            <i class="fas fa-circle text-primary"></i><strong>Baixa: </strong>{{dados.baixas.0}}
                           </span>
                         </li>
                       </ul>
-                    </div>
-                    <div class="mt-2 text-center small">
-                      <p>Legenda do gráfico</p>
                     </div>
                   </div>
                 </div>
