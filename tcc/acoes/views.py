@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from . import models
 
 def index(request): 
     return render(request, 'index.html')
@@ -9,8 +10,8 @@ def acoes(request, codigo_da_acao, dias=7):
 	import json
 
 	def get_stock_info(symbol, tempo=0):
-	  ts = TimeSeries(key="mykey")
-	  data, _ = ts.get_daily(symbol=symbol+'.SAO', outputsize='full')
+	  ts = TimeSeries(key="Y776KGDDB6F03CB2")
+	  data, _ = ts.get_daily(symbol=symbol+'.SAO', outputsize='compact')
 	  if(tempo==0):
 	    return data
 	  else:
