@@ -28,7 +28,10 @@
 		        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		          <ul class="navbar-nav ml-auto">
 		            <li class="nav-item active">
-		              <a class="nav-link js-scroll-trigger" href="index.html"><i class="fa fa-home"></i>  Home<span class="sr-only">(current)</span></a>
+		              <form class="d-flex">
+                    <input id="buscar_acao" class="form-control me-2" type="search" placeholder="Ex. ITUB4" aria-label="Search">
+                    <a id="botao_buscar" onclick="window.location.href = 'http://localhost:8000/acoes/'+document.getElementById('buscar_acao').value+'/25';" href="#" class="btn btn-outline-info mx-2">Buscar</a>
+                  </form>
 		            </li>
 		          </ul>
 		        </div>
