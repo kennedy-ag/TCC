@@ -47,8 +47,7 @@ def acoes(request, codigo_da_acao, dias=20):
 
 
 def teste(request, codigo_da_acao, dias=20):
-
-	if(Acao.objects.get(codigo=codigo_da_acao)):
+	if(len(list(Acao.objects.filter(codigo=codigo_da_acao)))>0):
 		acoes = Acao.objects.filter(codigo=codigo_da_acao)
 		dados = {}
 		dados['aberturas'] = []
@@ -56,6 +55,7 @@ def teste(request, codigo_da_acao, dias=20):
 		dados['baixas'] = []
 		dados['fechamentos'] = []
 		dados['volumes'] = []
+		dados['datas'] = []
 
 		for i in acoes:
 			dados['aberturas'].append(round(float(i.abertura), 2))
@@ -63,7 +63,9 @@ def teste(request, codigo_da_acao, dias=20):
 			dados['baixas'].append(round(float(i.baixa), 2))
 			dados['fechamentos'].append(round(float(i.fechamento), 2))
 			dados['volumes'].append(i.volume)
+			dados['datas'].append(i.data)
 		dados['codigo'] = codigo_da_acao
+		
 	else:
 
 		acao = Acao.buscar(codigo_da_acao, dias)
@@ -92,7 +94,7 @@ def teste(request, codigo_da_acao, dias=20):
 		dados['media'] = media
 		dados['codigo'] = codigo_da_acao
 		dados['dias'] = quantidade
-		dados['datas'] = acao.keys()
+		dados['datas'] = list(acao.keys())
 		dados['ultimo'] = list(dados['datas'])
 
 
@@ -110,7 +112,8 @@ def teste(request, codigo_da_acao, dias=20):
 			lista_de_acoes[i].append(dados['media'])
 			lista_de_acoes[i].append(dados['datas'][i])
 
-		for i in lista_de_acoes:
-			acao = Acao(abertura=lista_de_acoes[i][0], fechamento=lista_de_acoes[i][1], baixa=lista_de_acoes[i][2], alta=lista_de_acoes[i][3], codigo=lista_de_acoes[i][4], volume=lista_de_acoes[i][5], empresa=lista_de_acoes[i][6], media=lista_de_acoes[i][7], data=lista_de_acoes[i][8])
+		for i in range(len(lista_de_acoes)):
+			a = Acao(abertura=lista_de_acoes[i][0], fechamento=lista_de_acoes[i][1], baixa=lista_de_acoes[i][2], alta=lista_de_acoes[i][3], codigo=lista_de_acoes[i][4], volume=lista_de_acoes[i][5], empresa=lista_de_acoes[i][6], media=lista_de_acoes[i][7], data=lista_de_acoes[i][8])
+			a.save()
 
 	return render(request, 'teste.html', {'dados': dados})
