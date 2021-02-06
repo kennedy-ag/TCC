@@ -13,24 +13,21 @@ class Acao(models.Model):
 	media = models.FloatField(null=False)
 	data = models.DateField(null=False)
 
-	def buscar(codigo_da_acao, dias=20):
+	def buscar(codigo_da_acao, dias=20, output='full'):
 
-		def get_stock_info(symbol, tempo=0):
+		def get_stock_info(symbol, tempo):
 		  ts = TimeSeries(key="Y776KGDDB6F03CB2")
-		  data, _ = ts.get_daily(symbol=symbol+'.SAO', outputsize='compact')
-		  if(tempo==0):
-		    return data
-		  else:
-		    lista_temporal = {}
-		    limitador = 0
-		    for i in data:
-		      if(limitador==tempo):
-		        break
-		      else:
-		        lista_temporal[i] = data[i]
-		        lista_temporal[i]['0. empresa'] = name_stock(symbol)
-		        limitador += 1
-		    return lista_temporal
+		  data, _ = ts.get_daily(symbol=symbol+'.SAO', outputsize=output)
+		  lista_temporal = {}
+		  limitador = 0
+		  for i in data:
+		    if(limitador==tempo):
+		      break
+		    else:
+		      lista_temporal[i] = data[i]
+		      lista_temporal[i]['0. empresa'] = name_stock(symbol)
+		      limitador += 1
+		  return lista_temporal
 
 		def name_stock(stock_id):
 			import json

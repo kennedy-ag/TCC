@@ -6,4 +6,5 @@ urlpatterns = [
     path('acoes/<str:codigo_da_acao>/<int:dias>', views.acoes, name='acoes'),
     path('acoes/<str:codigo_da_acao>/', views.acoes, name='acoes'),
     path('teste/<str:codigo_da_acao>/<int:dias>', views.teste, name='teste'),
+    path('teste/<str:codigo_da_acao>/', views.teste, name='teste'),
 ]

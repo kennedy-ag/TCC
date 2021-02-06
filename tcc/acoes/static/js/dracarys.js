@@ -4,20 +4,18 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 
 var dados = document.getElementById("dados").innerHTML;
-var datas = document.getElementById("datas").innerHTML;
+var datas = document.getElementsByClassName("datas");
 
 dados = dados.substring(1, dados.length-1);
-datas = datas.substring(11, datas.length-2);
+
 
 var array = JSON.parse("[" + dados + "]");
-datas = datas.split(',');
-
-let fdate = [];
-for(let i of datas){
-  let d = i.split('-');
-  d = d[2].substring(0, 2)+"/"+d[1];
-  fdate.push(d);
+var fdate = [];
+for(let data of datas){
+  fdate.push(data.innerHTML);
 }
+
+
 
 function graphic(datas, dados){
   var ctx = document.getElementById("myAreaChart");
