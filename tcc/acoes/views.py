@@ -73,7 +73,7 @@ def teste(request, codigo_da_acao, dias=25):
 				break
 
 		dados['codigo'] = codigo_da_acao
-		dados['ultimo'] = dados['datas'][0]
+		dados['ultimo'] = dados['datas'][len(dados['datas'])-1]
 		dados['empresa'] = i.empresa
 		dados['dias'] = dias
 
@@ -108,14 +108,16 @@ def teste(request, codigo_da_acao, dias=25):
 			media += float(acao[i]['4. close'])
 			quantidade += 1
 
-			
-
 		media = round(media/quantidade, 2)
 		dados['media'] = media
 		dados['codigo'] = codigo_da_acao
 		dados['dias'] = quantidade
 		dados['datas'] = list(acao.keys())[0:quantidade]
 		dados['ultimo'] = dados['datas'][0]
+
+		for i in dados:
+			if(type(dados[i]) is list):
+				dados[i].reverse()
 
 		return dados
 
@@ -141,6 +143,17 @@ def teste(request, codigo_da_acao, dias=25):
 			a.save()
 
 
+	def verificar_datas(acao, ultima):
+		from datetime import datetime
+		l = []
+		for i in acao.keys():
+			if(datetime.strptime(i, '%Y-%m-%d').date()<=ultima):
+				l.append(i)
+		for i in l:
+			del acao[i]
+		return acao
+
+
 
 
 	# Verifica se já existe registro desse código no banco, se existir, gera a estrutura de dados
@@ -148,9 +161,18 @@ def teste(request, codigo_da_acao, dias=25):
 
 	if(len(list(Acao.objects.filter(codigo=codigo_da_acao)))>0):
 		registros = Acao.objects.filter(codigo=codigo_da_acao)
-		ontem = date.today() - timedelta(1)
-		ultima_data_registrada = registros[0].data
-		dados = {'dracarys': 1000}
+		ontem = date.today() - timedelta(2)
+		ultima_data_registrada = registros[len(registros)-1].data
+		if(ultima_data_registrada==ontem):
+			dados = gerar_estrutura(registros)
+		else:
+			quantidade_dias = abs((ontem - ultima_data_registrada).days)
+			acao = Acao.buscar(codigo_da_acao, quantidade_dias, 'compact')
+			a = verificar_datas(acao, ultima_data_registrada)
+			d = gerar_estrutura_banco(acao)
+			salvar(d)
+			registros = Acao.objects.filter(codigo=codigo_da_acao)
+			dados = gerar_estrutura(registros)
 
 
 
@@ -160,6 +182,10 @@ def teste(request, codigo_da_acao, dias=25):
 	else:
 		acao = Acao.buscar(codigo_da_acao, 300)
 		dados = gerar_estrutura_banco(acao)
+		d = gerar_estrutura_banco(acao)
+		salvar(d)
+		registros = Acao.objects.filter(codigo=codigo_da_acao)
+		dados = gerar_estrutura(registros)
 
 		
-	return render(request, 'test.html', {'dados': dados})
+	return render(request, 'teste.html', {'dados': dados})
