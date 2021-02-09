@@ -22,7 +22,7 @@ function graphic(datas, dados){
   var myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: datas,
+      labels: datas.reverse(),
       datasets: [{
         label: "Valor",
         lineTension: 0,
@@ -36,7 +36,7 @@ function graphic(datas, dados){
         pointHoverBorderColor: "rgba(78, 115, 223, 1)",
         pointHitRadius: 10,
         pointBorderWidth: 2,
-        data: dados,
+        data: dados.reverse(),
       }],
     },
     options: {

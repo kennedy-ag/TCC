@@ -142,6 +142,7 @@
                         <a class="dropdown-item" href="http://localhost:8000/acoes/{{dados.codigo}}/7">7 dias</a>
                         <a class="dropdown-item" href="http://localhost:8000/acoes/{{dados.codigo}}/15">15 dias</a>
                         <a class="dropdown-item" href="http://localhost:8000/acoes/{{dados.codigo}}/30">30 dias</a>
+                        <a class="dropdown-item" href="http://localhost:8000/acoes/{{dados.codigo}}/45">45 dias</a>
                         <a class="dropdown-item" href="http://localhost:8000/acoes/{{dados.codigo}}/60">60 dias</a>
                       </div>
                     </div>
@@ -151,7 +152,9 @@
                     <div class="chart-area">
                       <canvas id="myAreaChart"></canvas>
                       <p id="dados" class="d-none">{{dados.fechamentos}}</p>
-                      <p id="datas" class="d-none">{{dados.datas}}</p>
+                      {% for i in dados.datas  %}
+                      <p class="datas d-none">{{i}}</p>
+                      {% endfor %}
                     </div>
                   </div>
                 </div>
@@ -239,7 +242,7 @@
     <script src="{% static 'js/grayscale.min.js' %}"></script>
     <script src="{% static 'js/previsoes.js' %}"></script>
     <script src="{% static 'js/chart.min.js' %}"></script>
-    <script src="{% static 'js/chart-area-demo.js' %}"></script>
+    <script src="{% static 'js/dracarys.js' %}"></script>
     <script type="text/javascript">
       jQuery(document).ready(function(){
         jQuery("#back-to-top").hide();

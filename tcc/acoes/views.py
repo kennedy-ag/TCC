@@ -6,48 +6,7 @@ def index(request):
     return render(request, 'index.html')
 
 
-def acoes(request, codigo_da_acao, dias=20):
-
-	acao = Acao.buscar(codigo_da_acao, dias)
-
-	dados = {}
-	media = 0
-	quantidade = 0
-	dados['aberturas'] = []
-	dados['altas'] = []
-	dados['baixas'] = []
-	dados['fechamentos'] = []
-	dados['volumes'] = []
-
-	for i in acao:
-		dados['aberturas'].append(round(float(acao[i]['1. open']), 2))
-		dados['altas'].append(round(float(acao[i]['2. high']), 2))
-		dados['baixas'].append(round(float(acao[i]['3. low']), 2))
-		dados['fechamentos'].append(round(float(acao[i]['4. close']), 2))
-		dados['volumes'].append(acao[i]['5. volume'])
-		dados['empresa'] = acao[i]['0. empresa']
-		
-		media += float(acao[i]['4. close'])
-		quantidade += 1
-
-	media = round(media/quantidade, 2)
-	dados['media'] = media
-	dados['codigo'] = codigo_da_acao
-	dados['dias'] = quantidade
-	dados['datas'] = acao.keys()
-	dados['ultimo'] = list(dados['datas'])[0]
-
-
-	return render(request, 'acoes.html', {'dados': dados})
-
-
-
-
-
-
-
-
-def teste(request, codigo_da_acao, dias=25):
+def acoes(request, codigo_da_acao, dias=25):
 
 	def gerar_estrutura(registros):
 		dados = {}
@@ -73,7 +32,7 @@ def teste(request, codigo_da_acao, dias=25):
 				break
 
 		dados['codigo'] = codigo_da_acao
-		dados['ultimo'] = dados['datas'][len(dados['datas'])-1]
+		dados['ultimo'] = dados['datas'][0]
 		dados['empresa'] = i.empresa
 		dados['dias'] = dias
 
@@ -161,8 +120,16 @@ def teste(request, codigo_da_acao, dias=25):
 
 	if(len(list(Acao.objects.filter(codigo=codigo_da_acao)))>0):
 		registros = Acao.objects.filter(codigo=codigo_da_acao)
-		ontem = date.today() - timedelta(2)
+		registros = list(registros)
+		if(date.today().weekday==6):
+			dd = 2
+		elif(date.today().weekday==0):
+			dd = 3
+		else:
+			dd = 1
+		ontem = date.today() - timedelta(dd)
 		ultima_data_registrada = registros[len(registros)-1].data
+		registros.reverse()
 		if(ultima_data_registrada==ontem):
 			dados = gerar_estrutura(registros)
 		else:
@@ -188,4 +155,4 @@ def teste(request, codigo_da_acao, dias=25):
 		dados = gerar_estrutura(registros)
 
 		
-	return render(request, 'teste.html', {'dados': dados})
+	return render(request, 'acoes.html', {'dados': dados})
