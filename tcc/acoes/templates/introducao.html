@@ -1,0 +1,210 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Introdução</title>
+  </head>
+  <body style="margin-top: 76px;">
+    
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg fixed-top">
+      <a class="navbar-brand js-scroll-trigger mx-2" href="http://localhost:8000/"><i class="fa fa-wallet"></i>  Sistema</a>
+      <button class="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item active">
+            <a class="nav-link js-scroll-trigger mx-2" href="http://localhost:8000/"><i class="fa fa-home"></i>  Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger mx-2" href="http://localhost:8000/tecnicas" tabindex="-1" aria-disabled="true"><i class="fa fa-chart-line"></i>  Técnicas</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <ul class="nav nav-pills mb-3 px-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-acoes" type="button" role="tab" aria-selected="true">Ações</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-termos" type="button" role="tab" aria-selected="false">Termos</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-tecnicas" type="button" role="tab" aria-selected="false">Técnicas</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-referencias" type="button" role="tab" aria-selected="false">Referências</button>
+      </li>
+    </ul>
+    <div class="tab-content p-5">
+      <div class="tab-pane fade show active border border-secondary border-3 rounded p-5" id="pills-acoes" role="tabpanel">
+        <h1>O que são ações?</h1>
+        <hr>
+        <p>De forma simples, uma ação é uma parte fracionária de todo o capital de uma empresa, 
+        que pode ser negociada dentro de um mercado conhecido como Bolsa de Valores. 
+        No geral, toda empresa é formada por várias ações, é como se cada ação fosse um pedaço
+        minúsculo desta empresa. Diante disso, vale ressaltar que nem todas as empresas negociam
+        suas ações na Bolsa, as empresas que podem realizá-lo são chamadas de Sociedades Anônimas, 
+        ou S/As.</p>
+        <p>Tendo em vista que algumas ações podem ser negociadas, é justo dizer que pessoas, tanto
+        físicas quanto jurídicas, podem participar ativamente nesse tipo de negócio, seja comprando
+        ou vendendo. As pessoas que possuem/compram ações de uma determinada empresa, se tornam
+        sócios desta, podendo garantir algumas vantagens como participar dos lucros dela e até mesmo
+        ter direito ao voto em assembléias. No entanto, ao possuir ações, além de garantir vantagens, 
+        também adquire riscos como obter prejuízos e perdas inestimáveis. Comprar uma ação significa
+        comprar uma pequena parte do patrimônio e das responsabilidades de uma empresa.</p>
+        <p>De modo geral, a maior parte das ações de uma empresa não é negociada na Bolsa, elas ficam 
+        sob posse do(s) dono(s).</p>
+        <hr>
+        <div class="p-4"></div>
+
+
+
+
+        <h2 class="mb-4">Exemplo de ação</h2>
+        <p>Toda ação tem um preço que varia durante um determinado intervalo durante o dia todos os dias úteis.
+        Diante disso, as ações possuem alguns atributos como:</p>
+        <ul>
+          <li>Valor atual</li>
+          <li>Valor mínimo</li>
+          <li>Valor máximo</li>
+          <li>Valor médio</li>
+          <li>Volume</li>
+          <li>Código (também conhecido como Ticker)</li>
+          <li>Nome da empresa relacionada</li>
+        </ul>
+        <p>Assim, é possível gerar gráficos
+        para analisar como vem sendo o desempenho de uma ação nos últimos X dias. Caso já se sinta confortável
+        para visualizar e compreender um gráfico, clicando <a href="http://localhost:8000/acoes/TASA4/" target="_blank">aqui</a>
+        você poderá ver o gráfico dos últimos 25 dias das ações de uma empresa chamada Taurus Armas, também é
+        possível visualizar todos os atributos citados acima.</p>
+        <p>A imagem abaixo representa um exemplo de gráfico gerado por uma funcionalidade do sistema, nela
+        é possível alterar o intervalo do gráfico em dias, bem como pesquisar por novas ações e gerar o relatório
+        para impressão.</p>
+        <div class="p-4">
+          <img class="img-fluid rounded" src="{% static 'img/grafico_exemplo.png' %}">
+        </div>
+        <div class="p-4"></div>
+
+
+
+
+        <h2 class="mb-4">Tipos de ações</h2>
+        <ul>
+          <li><p><strong>Ação preferencial:</strong> este tipo de ação tem prioridade na
+          divisão dos lucros de uma empresa, isto é, pessoas que possuem ações deste tipo
+          têm preferência nos lucros, mas não têm direito a votar em assembléias.</p></li>
+          <li><p><strong>Ação ordinária:</strong> este tipo de ação concede o direito ao voto,
+          mas não dá preferência na repartição dos lucros, diferente das preferenciais.</p></li>
+        </ul>
+        <div class="p-4"></div>
+
+
+
+
+        <h2 class="mb-4">Nomenclatura das ações</h2>
+        <p>Toda ação tem um código que faz referência a ela, por exemplo BBDC3; essa é a formação padrão
+        de todos os códigos de ação, são 4 letras seguidas de um número. As 4 letras são correspondentes
+        ao nome da empresa a qual a ação pertence, a BBDC3 pertence ao Banco Bradesco, então BBDC é uma
+        forma cômoda de se referir a ele utilizando apenas 4 letras.</p>
+        <p>O número representa o tipo de ativo que aquele código representa; cada número corresponde a um
+        determinado tipo. Os mais comuns são:</p>
+        <ul>
+          <li>3 - ação ordinária</li>
+          <li>4 - ação preferencial</li>
+          <li>34 - ações originárias de países estrangeiros que são negociadas na Bolsa nacional (BDR)</li>
+        </ul>
+      </div>
+
+
+
+
+      <div class="tab-pane fade border border-secondary border-3 rounded p-5" id="pills-termos" role="tabpanel">
+        <h1 class="text-center">Termos e conceitos</h1>
+        <hr>
+        <h3 class="mb-4">Perfil de investidor</h3>
+        <p>O perfil de investidor é uma forma de mensurar quanto de risco um investidor está
+        disposto a correr. Geralmente existem 3 categorias: Conservador, Moderado e Agressivo.</p>
+        <ul>
+          <li><p><strong>Conservador: </strong>quando o investidor tem receio de ter prejuízos em
+          seus investimentos, também tem receio de correr riscos.</p></li>
+          <li><p><strong>Moderado: </strong>quando o investidor tem um certo receio de ter prejuízos
+          , mas que isso não é uma barreira que o impede de investir. Este tipo de investidor prefere
+          analisar quais são suas melhores opções.</p></li>
+          <li><p><strong>Agressivo: </strong>este é o tipo de investidor que não tem medo de arriscar-se
+          e aplica seu dinheiro em várias opções diferentes.</p></li>
+        </ul>
+        <p>O perfil de investidor pode ser obtido levando em consideração algumas informações do investidor,
+        tais como situação financeira, seus objetivos e tolerância a riscos.</p>
+        <div class="p-3"></div>
+
+        <h3 class="mb-4">Carteira de ativos</h3>
+        <p>A carteira de ativos é o conjunto de todos os investimentos de uma pessoa, cada investidor
+        tem sua própria carteira de ativos. Por exemplo, se uma pessoa investe em ações do Bradesco e 
+        das Lojas Americanas, apenas, a carteira de ativos dessa pessoa vai conter algumas BBDC3 e algumas
+        LAME4.</p>
+        <div class="p-3"></div>
+
+        <h3 class="mb-4">Ativo e passivo</h3>
+        <p><strong>Ativo: </strong>Um ativo é todo o bem que possui um valor monetário, por exemplo terrenos, 
+        ações, imóveis, automóveis, entre outros.</p>
+        <p><strong>Passivo:</strong>Um passivo é tudo o que representa um gasto ou subtração, por exemplo contas, 
+        impostos, dinheiro emprestado, entre outros.</p>
+        <div class="p-3"></div>
+
+        <h3 class="mb-4">Corretora de valores</h3>
+        <p>Uma corretora de valores é uma instituição que faz o intermédio das operações feitas entre o cliente e
+        o mercado financeiro, elas atuam no meio dessa relação, uma vez que uma pessoa não tem acesso direto ao
+        mercado sem ser por meio destas instituições.</p>
+        <div class="p-3"></div>
+
+        <h3 class="mb-4">Custódia</h3>
+        <p>Custódia significa a guarda ou armazenamento de seus investimentos. Existem instituições autorizadas
+        a custodiar ativos, são chamadas de Centrais de Custódia e funcionam como um banco que armazena e toma
+        conta de seus patrimônios financeiros.</p>
+        <div class="p-3"></div>
+
+        <h3 class="mb-4">Day Trade</h3>
+        <p>Day Trade é o nome que se dá às operações de compra e venda realizadas em um curto espaço de tempo, 
+        é uma técnica que visa obter lucros em pequenos intervalos.</p>
+        <div class="p-3"></div>
+
+        <h3 class="mb-4">Liquidez</h3>
+        <p>Liquidez é a facilidade em que um ativo qualquer pode ser convertido em dinheiro, quanto mais rápido
+        é essa conversão, maior a liquidez.</p>
+        <div class="p-3"></div>
+
+        <h3 class="mb-4">Cotação</h3>
+        <p>Cotação é o valor que um determinado ativo possui. As ações são bons exemplos, elas possuem cotação
+        que varia de acordo com uma série de fatores, em outras palavras, o valor que uma ação possui em determinado
+        momento representa sua cotação;</p>
+        <div class="p-3"></div>
+      </div>
+      
+      <div class="tab-pane fade border border-secondary border-3 rounded p-5" id="pills-tecnicas" role="tabpanel">
+        <p>Existem técnicas básicas e simples para começar a analisar os gráficos e a evolução na cotação das
+        ações que ajudam a compreender qual o fluxo possível que uma ação passa a tomar nos próximos dias, evitando
+        riscos desnecessários e minimizando as possíveis perdas. Na página <a href="http://localhost:8000/tecnicas">Técnicas</a> são mostradas algumas dessas técnicas.</p>
+      </div>
+
+      <div class="tab-pane fade border border-secondary border-3 rounded p-5" id="pills-referencias" role="tabpanel">
+        <p><strong>Significado dos códigos das ações: como identificá-las na Bolsa.</strong> Clear Corretora, 2018. Disponível em: &lt;<a href="https://blog.clear.com.br/significado-dos-codigos-das-acoes/" target="_blank">https://blog.clear.com.br/significado-dos-codigos-das-acoes/</a>&gt;. Acesso em: 18 de Fev. de 2021.</p>
+
+        <p><strong>29 Termos Usados no Mercado Financeiro.</strong> Rico, 2018. Disponível em: &lt;<a href="https://blog.rico.com.vc/termo-mercado-financeiro" target="_blank">https://blog.rico.com.vc/termo-mercado-financeiro</a>&gt;. Acesso em: 18 de Fev. de 2021.</p>
+      </div>
+    </div>
+
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+  </body>
+</html>

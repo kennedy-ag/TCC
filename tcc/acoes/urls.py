@@ -5,4 +5,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('acoes/<str:codigo_da_acao>/<int:dias>', views.acoes, name='acoes'),
     path('acoes/<str:codigo_da_acao>/', views.acoes, name='acoes'),
+    path('introducao', views.introducao, name='introducao'),
+    path('tecnicas', views.tecnicas, name='tecnicas'),
+    path('lista', views.lista, name='lista'),
 ]

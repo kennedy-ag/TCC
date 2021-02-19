@@ -121,9 +121,9 @@ def acoes(request, codigo_da_acao, dias=25):
 	if(len(list(Acao.objects.filter(codigo=codigo_da_acao)))>0):
 		registros = Acao.objects.filter(codigo=codigo_da_acao)
 		registros = list(registros)
-		if(date.today().weekday==6):
+		if(date.today().weekday()==6):
 			dd = 2
-		elif(date.today().weekday==0):
+		elif(date.today().weekday()==0):
 			dd = 3
 		else:
 			dd = 1
@@ -156,3 +156,13 @@ def acoes(request, codigo_da_acao, dias=25):
 
 		
 	return render(request, 'acoes.html', {'dados': dados})
+
+
+def introducao(request):
+	return render(request, 'introducao.html')
+
+def tecnicas(request):
+	return render(request, 'tecnicas.html')
+
+def lista(request):
+	return render(request, 'lista_de_acoes.html')

@@ -26,7 +26,7 @@ function graphic(datas, dados){
       datasets: [{
         label: "Valor",
         lineTension: 0,
-        backgroundColor: "rgba(78, 115, 223, 0.3)",
+        backgroundColor: "rgba(78, 115, 223, 0.5)",
         borderColor: "rgba(78, 115, 223, 1)",
         pointRadius: 3,
         pointBackgroundColor: "rgba(78, 115, 223, 1)",

@@ -9,14 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Sistema de suporte</title>
+    <title>Página inicial</title>
   </head>
 
 
   <body id="top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg fixed-top">
-		  <a class="navbar-brand js-scroll-trigger" href="#top"><i class="fa fa-money"></i>  Sistema</a>
+		  <a class="navbar-brand js-scroll-trigger" href="#top"><i class="fa fa-wallet"></i>  Sistema</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
@@ -24,28 +23,19 @@
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav ml-auto">
 		      <li class="nav-item active">
-		        <a class="nav-link js-scroll-trigger" href="#"><i class="fa fa-home"></i>  Home<span class="sr-only">(current)</span></a>
+		        <a class="nav-link js-scroll-trigger mx-2" href="#top"><i class="fa fa-home"></i>  Home<span class="sr-only">(current)</span></a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link js-scroll-trigger" href="#sobre"><i class="fa fa-info-circle"></i>  Sobre</a>
+		        <a class="nav-link js-scroll-trigger mx-2" href="#sobre"><i class="fa fa-info-circle"></i>  Sobre</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link js-scroll-trigger" href="#objetivos" tabindex="-1" aria-disabled="true"><i class="fa fa-tasks"></i>  Objetivos</a>
-		      </li>
-		      <li class="nav-item dropdown">
-		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		          <i class="fa fa-wrench"></i>  Serviços
-		        </a>
-		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		          <a class="dropdown-item js-scroll-trigger" href="#servicos">Primeiro serviço</a>
-		          <a class="dropdown-item js-scroll-trigger" href="#servicos">Segundo serviço</a>
-		          <div class="dropdown-divider"></div>
-		          <a class="dropdown-item js-scroll-trigger" href="#servicos">Terceiro serviço</a>
-		          <a class="dropdown-item js-scroll-trigger" href="#servicos">Quarto serviço</a>
-		        </div>
+		        <a class="nav-link js-scroll-trigger mx-2" href="#servicos"><i class="fa fa-wrench"></i>  Serviços</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link js-scroll-trigger" href="#qualidade" tabindex="-1" aria-disabled="true"><i class="fa fa-check-square"></i>  Qualidade</a>
+		        <a class="nav-link js-scroll-trigger mx-2" href="http://localhost:8000/introducao" tabindex="-1" aria-disabled="true"><i class="fa fa-check-square"></i>  Introdução</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link js-scroll-trigger mx-2" href="/tecnicas" tabindex="-1" aria-disabled="true"><i class="fa fa-chart-line"></i>  Técnicas</a>
 		      </li>
 		    </ul>
 		  </div>
@@ -98,20 +88,15 @@
 					<h2><i class="fa fa-info-circle"></i>  Sobre</h2>
 					<hr>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						O sistema de auxílio e suporte para investidores iniciantes é um projeto de Trabalho 
+						de Conclusão de Curso, requisito parcial para obtenção do diploma de Tecnólogo em 
+						Sistemas para Internet, que foi pensado e desenvolvido para atender pequenos e novos 
+						investidores.
 					</p>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						Esta é a versão inicial do sistema, que contém algumas funcionalidades que já podem 
+						ser testadas e utilizadas. O sistema conta com uma interface amigável, limpa e prática, 
+						livre de gráficos em excesso, grandes quantidades de informação e oscilações constantes.
 					</p>
 				</div>
 			</div>
@@ -122,20 +107,16 @@
 				<h2><i class="fa fa-users"></i>  Público alvo</h2>
 				<ul class="m-0 m-md-4">
 					<li>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p>Pessoas que querem dar início às suas jornadas no mundo dos investimentos;</p>
 					</li>
 					<li>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p>Pequenos investidores que desejam acompanhar seus investimentos;</p>
 					</li>
 					<li>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p>Pessoas que procuram sugestões para investir de acordo com suas pretensões;</p>
 					</li>
 					<li>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p>Pessoas que nunca investiram e têm interesse em obter uma renda extra.</p>
 					</li>
 				</ul>
 			</div>
@@ -144,12 +125,7 @@
 			<div id="objetivos" class="sobre rounded p-4">
 				<h2><i class="fa fa-tasks"></i>  Objetivos</h2>
 				<hr>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p>Este sistema tem como objetivo </p>
 				<ul>
 					<li>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -173,12 +149,13 @@
             <div class="card shadow my-3 servicos">
               <img src="https://www.trsil.org/sites/default/files/styles/slideshow/public/iStock-918508630.jpg?itok=NeS1xS39" class="card-img-top" alt="...">
               <div class="card-body">
-                <p class="card-text"><i class="fa fa-cog"></i>  Serviço 1</p>
+                <p class="card-text"><i class="fa fa-cog"></i>  Visualizar ação</p>
                 <hr>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="card-text">Visualizar informações sobre uma determinada ação, acompanhar o ritmo dela, bem como seu respectivo
+                gráfico dos últimos X dias, apenas digitando o código desta.</p>
                 <p class="card-text">Categoria: iniciante</p>
-                <a href="/previsoes" class="card-link btn btn-primary"><i class="fa fa-cubes"></i>  Experimentar</a>
+                <hr>
+                <a href="/acoes/ELET3" class="card-link btn btn-primary">Experimentar</a>
               </div>
             </div>
           </div>
@@ -193,7 +170,8 @@
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 								tempor incididunt ut labore et dolore magna aliqua.</p>
                 <p class="card-text">Categoria: iniciante</p>
-                <button class="card-link btn btn-primary"><i class="fa fa-cubes"></i>  Experimentar</button>
+                <hr>
+                <button class="card-link btn btn-primary">Experimentar</button>
               </div>
             </div>
           </div>
@@ -208,7 +186,8 @@
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 								tempor incididunt ut labore et dolore magna aliqua.</p>
                 <p class="card-text">Categoria: intermediário</p>
-                <button class="card-link btn btn-primary"><i class="fa fa-cubes"></i>  Experimentar</button>
+                <hr>
+                <button class="card-link btn btn-primary">Experimentar</button>
               </div>
             </div>
           </div>
@@ -223,7 +202,8 @@
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 								tempor incididunt ut labore et dolore magna aliqua.</p>
                 <p class="card-text">Categoria: intermediário</p>
-                <button class="card-link btn btn-primary"><i class="fa fa-cubes"></i>  Experimentar</button>
+                <hr>
+                <button class="card-link btn btn-primary">Experimentar</button>
               </div>
             </div>
           </div>
@@ -259,7 +239,7 @@
 
 
 		<div class="footer bg-dark p-4">
-			<p>Copyright &copy; Kennedy e Leandro S.A. 2020. Todos os direitos reservados.</p>
+			<p>Copyright &copy; Kennedy e Leandro S.A. 2020 - <script>let now = new Date; document.write(now.getFullYear());</script>. Todos os direitos reservados.</p>
 		</div>
 
 	    <a id="back-to-top" href="#">^</a>
@@ -269,6 +249,7 @@
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/jquery.easing.min.js' %}"></script>
     <script src="{% static 'js/grayscale.min.js' %}"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
     <script type="text/javascript">
       jQuery(document).ready(function(){
         jQuery("#back-to-top").hide();
