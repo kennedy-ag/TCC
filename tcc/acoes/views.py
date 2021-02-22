@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Acao
 from datetime import date, timedelta
+from django.http import HttpRequest
 
 def index(request): 
     return render(request, 'index.html')
@@ -165,4 +166,35 @@ def tecnicas(request):
 	return render(request, 'tecnicas.html')
 
 def lista(request):
-	return render(request, 'lista_de_acoes.html')
+	acoes = Acao.objects.all()
+	lista_de_tickers = []
+	tabela = {}
+	aux = 1
+
+	for i in acoes:
+		if(i.codigo not in lista_de_tickers):
+			lista_de_tickers.append(i.codigo)
+
+	for i in lista_de_tickers:
+		acao = Acao.objects.filter(codigo=i)[0]
+		tabela[acao.codigo] = {
+			'linha': aux,
+			'empresa': acao.empresa
+		}
+		aux += 1
+
+	return render(request, 'lista_de_acoes.html', {'tabela': tabela})
+
+def comparacao(request):
+	r = request.GET.lists()
+	r = dict(r)
+	r = r['acoes_lista']
+	return render(request, 'comparativo.html', {'dracarys': r})
+
+def teste(request):
+	dados = {
+		'dias': 25,
+		'labels': ['FBOK34', 'ABEV3', 'AZUL4', 'BBDC3', 'PETR4']
+
+	}
+	return render(request, 'teste.html', {'dados': dados})

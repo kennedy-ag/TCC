@@ -31,35 +31,7 @@
 
 
 
-    <div class="container">
-      <div class="p-2"></div>
-      <h1 >Lista de ações</h1>
-      <hr>
-      <form method="GET" action="/compare">
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr class="text-center">
-              <th>Linha</th>
-              <th>Ação</th>
-              <th>Empresa</th>
-              <th>Check</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for i in tabela.items %}
-            <tr class="text-center">
-              <th scope="row">{{i.1.linha}}</th>
-              <td>{{i.0}}</td>
-              <td>{{i.1.empresa}}</td>
-              <td><input type="checkbox" name="acoes_lista" value="{{i.0}}"></td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        <input class="form-control btn btn-primary" type="submit" value="Visualizar">
-      </form>
-    </div>
-    <div class="p-4"></div>
+    {{dracarys}}
           
 
     <a id="back-to-top" href="#">^</a>
