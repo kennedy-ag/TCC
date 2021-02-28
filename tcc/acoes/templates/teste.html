@@ -1,33 +1,53 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yonkou Comparison</title>
+  <title>Comparação - {{tickers}}</title>
   <link rel="stylesheet" type="text/css" href="https://www.chartjs.org/samples/latest/style.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
   <script src="https://www.chartjs.org/dist/2.9.4/Chart.min.js"></script>
   <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
 </head>
 <body>
-  {% for i in dados.labels %}
-  <p class="labels">{{i}}</p>
+
+  {% for i in datas %}
+  <p class="datas d-none">{{i}}</p>
   {% endfor %}
-  <div class="content">
-    <div class="wrapper">
-      <canvas id="chart-0"></canvas>
+
+    <div class="card shadow m-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Resumo dos últimos {{dias}} dias</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <div class="chart-area">
+          <div class="content">
+            <div class="wrapper">
+              <canvas id="chart-0"></canvas>
+            </div>
+            <div id="chart-analyser" class="analyser"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="chart-analyser" class="analyser"></div>
-  </div>
+
 
   <script>
-    var lbl = document.getElementsByClassName('labels');
+    var dados = JSON.parse('{{dados}}');
+    var datas = document.getElementsByClassName("datas");
+    var fdate = [];
+    for(let data of datas){
+      fdate.push(data.innerHTML);
+    } 
+
     var presets = window.chartColors;
     var utils = Samples.utils;
     var inputs = {
-      min: 30,
-      max: 50,
-      count: {{dados.dias}},
+      count: '{{dias}}',
       decimals: 2,
       continuity: 1
     };
@@ -36,44 +56,40 @@
       return utils.numbers(inputs);
     }
 
-    function generateLabels() {
-      return utils.months({count: inputs.count});
-    }
-
     utils.srand(42);
 
     var data = {
-      labels: generateLabels(),
+      labels: fdate.reverse(),
       datasets: [{
         backgroundColor: utils.transparentize(presets.red),
         borderColor: presets.red,
-        data: generateData(),
+        data: dados[0].reverse(),
         hidden: true,
-        label: lbl[0].innerHTML
+        label: '{{tickers.0}}'
       }, {
         backgroundColor: utils.transparentize(presets.orange),
         borderColor: presets.orange,
-        data: generateData(),
-        label: 'D1',
+        data: dados[1].reverse(),
+        label: '{{tickers.1}}',
         fill: '-1'
       }, {
         backgroundColor: utils.transparentize(presets.yellow),
         borderColor: presets.yellow,
-        data: generateData(),
+        data: dados[2].reverse(),
         hidden: true,
-        label: 'D2',
+        label: '{{tickers.2}}',
         fill: 1
       }, {
         backgroundColor: utils.transparentize(presets.green),
         borderColor: presets.green,
-        data: generateData(),
-        label: 'AZUL4',
+        data: dados[3].reverse(),
+        label: '{{tickers.3}}',
         fill: '-1'
       }, {
         backgroundColor: utils.transparentize(presets.blue),
         borderColor: presets.blue,
-        data: generateData(),
-        label: 'D4',
+        data: dados[4].reverse(),
+        label: '{{tickers.4}}',
         fill: '-1'
       }]
     };
@@ -88,7 +104,19 @@
       },
       scales: {
         yAxes: [{
-          stacked: true
+          stacked: false
+        }],
+        xAxes: [{
+          time: {
+            unit: 'date'
+          },
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          ticks: {
+            maxTicksLimit: 15
+          }
         }]
       },
       plugins: {
@@ -128,5 +156,8 @@
       options: options
     });
   </script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
 </body>
 </html>

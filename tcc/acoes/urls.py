@@ -9,5 +9,5 @@ urlpatterns = [
     path('tecnicas', views.tecnicas, name='tecnicas'),
     path('lista', views.lista, name='lista'),
     path('compare', views.comparacao, name='comparacao'),
-    path('teste', views.teste, name='teste'),
+    path('compare/<int:dias>', views.comparacao),
 ]

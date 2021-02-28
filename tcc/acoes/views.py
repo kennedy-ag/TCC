@@ -176,25 +176,42 @@ def lista(request):
 			lista_de_tickers.append(i.codigo)
 
 	for i in lista_de_tickers:
-		acao = Acao.objects.filter(codigo=i)[0]
+		acao = Acao.objects.filter(codigo=i)
+		acao = list(acao)
+		acao.reverse()
+		acao = acao[0]
 		tabela[acao.codigo] = {
 			'linha': aux,
-			'empresa': acao.empresa
+			'empresa': acao.empresa,
+			'fechamento': acao.fechamento
 		}
 		aux += 1
 
 	return render(request, 'lista_de_acoes.html', {'tabela': tabela})
 
-def comparacao(request):
-	r = request.GET.lists()
-	r = dict(r)
-	r = r['acoes_lista']
-	return render(request, 'comparativo.html', {'dracarys': r})
 
-def teste(request):
-	dados = {
-		'dias': 25,
-		'labels': ['FBOK34', 'ABEV3', 'AZUL4', 'BBDC3', 'PETR4']
+def comparacao(request, dias=50):
+	lista_de_acoes = request.GET.lists()
+	lista_de_acoes = dict(lista_de_acoes)
+	lista_de_acoes = lista_de_acoes['acoes_lista']
+	lista_de_fechamentos = []
+	lista_de_datas = []
 
-	}
-	return render(request, 'teste.html', {'dados': dados})
+	for i in range(0, len(lista_de_acoes)):
+		lista_de_fechamentos.append([])
+
+	for i in range(0, len(lista_de_acoes)):
+		controlador = 0
+		registros = Acao.objects.filter(codigo=lista_de_acoes[i])
+		registros = list(registros)
+		registros.reverse()
+
+		for registro in registros:
+			if(controlador==dias):
+				break
+			lista_de_fechamentos[i].append(registro.fechamento)
+			if(registro.data not in lista_de_datas):
+				lista_de_datas.append(registro.data)
+			controlador += 1
+
+	return render(request, 'comparativo.html', {'dados': lista_de_fechamentos, 'datas': lista_de_datas, 'dias': len(lista_de_datas), 'tickers': lista_de_acoes})

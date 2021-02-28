@@ -1,66 +1,181 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Lista de ações</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css' %}">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comparação - {{tickers}}</title>
+  <link rel="stylesheet" type="text/css" href="https://www.chartjs.org/samples/latest/style.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="https://www.chartjs.org/dist/2.9.4/Chart.min.js"></script>
+  <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+</head>
+<body style="margin-top: 70px;">
 
-  <body id="top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg fixed-top">
+    <a class="navbar-brand js-scroll-trigger mx-2" href="/"><i class="fa fa-wallet"></i>  Sistema</a>
+    <button class="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="fa fa-wallet"></i> Sistema</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"><i class="fa fa-home"></i> Home</a>
-            </li>
-          </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item active">
+          <a class="nav-link js-scroll-trigger mx-2" href="/"><i class="fa fa-home"></i>  Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger mx-2" href="/introducao" tabindex="-1" aria-disabled="true"><i class="fa fa-check-square"></i>  Introdução</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  {% for i in datas %}
+  <p class="datas d-none">{{i}}</p>
+  {% endfor %}
+
+    <div class="card shadow m-4">
+      <!-- Card Header - Dropdown -->
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">Resumo dos últimos {{dias}} dias</h6>
+      </div>
+      <!-- Card Body -->
+      <div class="card-body">
+        <div class="chart-area">
+          <div class="content">
+            <div class="wrapper">
+              <canvas id="chart-0"></canvas>
+            </div>
+            <div id="chart-analyser" class="analyser"></div>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
 
 
+  <script>
+    var dados = JSON.parse('{{dados}}');
+    var datas = document.getElementsByClassName("datas");
+    var fdate = [];
+    for(let data of datas){
+      fdate.push(data.innerHTML);
+    } 
 
-    {{dracarys}}
-          
+    var presets = window.chartColors;
+    var utils = Samples.utils;
+    var inputs = {
+      count: '{{dias}}',
+      decimals: 2,
+      continuity: 1
+    };
 
-    <a id="back-to-top" href="#">^</a>
+    function generateData() {
+      return utils.numbers(inputs);
+    }
 
+    utils.srand(42);
 
+    var data = {
+      labels: fdate.reverse(),
+      datasets: [{
+        backgroundColor: utils.transparentize(presets.red),
+        borderColor: presets.red,
+        data: dados[0].reverse(),
+        hidden: true,
+        label: '{{tickers.0}}'
+      }, {
+        backgroundColor: utils.transparentize(presets.orange),
+        borderColor: presets.orange,
+        data: dados[1].reverse(),
+        label: '{{tickers.1}}',
+        fill: '-1'
+      }, {
+        backgroundColor: utils.transparentize(presets.yellow),
+        borderColor: presets.yellow,
+        data: dados[2].reverse(),
+        hidden: true,
+        label: '{{tickers.2}}',
+        fill: 1
+      }, {
+        backgroundColor: utils.transparentize(presets.green),
+        borderColor: presets.green,
+        data: dados[3].reverse(),
+        label: '{{tickers.3}}',
+        fill: '-1'
+      }, {
+        backgroundColor: utils.transparentize(presets.blue),
+        borderColor: presets.blue,
+        data: dados[4].reverse(),
+        label: '{{tickers.4}}',
+        fill: '-1'
+      }]
+    };
 
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'js/grayscale.min.js' %}"></script>
-    <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
-    <script type="text/javascript">
-      jQuery(document).ready(function(){
-        jQuery("#back-to-top").hide();
-        jQuery('a#back-to-top').click(function(){
-          jQuery('body,html').animate({
-            scrollTop: 0
-          }, 800);
-          return false;
-        });
-        jQuery(window).scroll(function(){
-          if(jQuery(this).scrollTop()>400){
-            jQuery('#back-to-top').fadeIn();
-          } else {
-            jQuery('#back-to-top').fadeOut();
+    var options = {
+      maintainAspectRatio: false,
+      spanGaps: false,
+      elements: {
+        line: {
+          tension: 0
+        }
+      },
+      scales: {
+        yAxes: [{
+          stacked: false
+        }],
+        xAxes: [{
+          time: {
+            unit: 'date'
+          },
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          ticks: {
+            maxTicksLimit: 15
           }
-        });
-      });
-    </script>
+        }]
+      },
+      plugins: {
+        filler: {
+          propagate: true
+        },
+        'samples-filler-analyser': {
+          target: 'chart-analyser'
+        }
+      },
+      tooltips: {
+        backgroundColor: "rgb(255,255,255)",
+        bodyFontColor: "#858796",
+        titleMarginBottom: 10,
+        titleFontColor: '#6e707e',
+        titleFontSize: 14,
+        borderColor: '#dddfeb',
+        borderWidth: 1,
+        xPadding: 15,
+        yPadding: 15,
+        displayColors: false,
+        intersect: false,
+        mode: 'index',
+        caretPadding: 10,
+        callbacks: {
+          label: function(tooltipItem, chart) {
+            var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+            return datasetLabel + ': R$ ' + tooltipItem.yLabel;
+          }
+        }
+      }
+    };
 
-  </body>
-
+    var chart = new Chart('chart-0', {
+      type: 'line',
+      data: data,
+      options: options
+    });
+  </script>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+</body>
 </html>
