@@ -10,4 +10,6 @@ urlpatterns = [
     path('lista', views.lista, name='lista'),
     path('compare', views.comparacao, name='comparacao'),
     path('compare/<int:dias>', views.comparacao),
+    path('sugestoes', views.sugestoes),
+    path('perfil', views.perfil),
 ]

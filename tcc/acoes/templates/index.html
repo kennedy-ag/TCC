@@ -43,32 +43,15 @@
 
 
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-		  <ol class="carousel-indicators">
-		    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		  </ol>
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img src="https://www.trsil.org/sites/default/files/styles/slideshow/public/iStock-918508630.jpg?itok=NeS1xS39" class="d-block w-100" alt="...">
-			  	<div class="carousel-caption d-none d-md-block">
-		        <h5>Titulo do slide</h5>
-		        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-		      </div>
+		      <img src="{% static 'img/slide_1.jpg' %}" class="d-block w-100" alt="...">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="https://www.trsil.org/sites/default/files/styles/slideshow/public/iStock-918508630.jpg?itok=NeS1xS39" class="d-block w-100" alt="...">
-		      <div class="carousel-caption d-none d-md-block">
-		        <h5>Titulo do slide</h5>
-		        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-		      </div>
+		      <img src="{% static 'img/slide_2.jpg' %}" class="d-block w-100" alt="...">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="https://www.trsil.org/sites/default/files/styles/slideshow/public/iStock-918508630.jpg?itok=NeS1xS39" class="d-block w-100" alt="...">
-		      <div class="carousel-caption d-none d-md-block">
-		        <h5>Titulo do slide</h5>
-		        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-		      </div>
+		      <img src="{% static 'img/slide_3.jpg' %}" class="d-block w-100" alt="...">
 		    </div>
 		  </div>
 		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -125,15 +108,15 @@
 			<div id="objetivos" class="sobre rounded p-4">
 				<h2><i class="fa fa-tasks"></i>  Objetivos</h2>
 				<hr>
-				<p>Este sistema tem como objetivo </p>
+				<p>Este sistema tem como objetivos: </p>
 				<ul>
 					<li>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p>Funcionar com ponto de partida para o investidor que está começando
+						sua jornada no mundo das ações;</p>
 					</li>
 					<li>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua.</p>
+						<p>Tornar a experiência do investidor iniciante mais agradável, simples e prática,
+						sem excesso de informação ou gráficos incompreensíveis.</p>
 					</li>
 				</ul>
 			</div>
@@ -147,13 +130,12 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="card shadow my-3 servicos">
-              <img src="https://www.trsil.org/sites/default/files/styles/slideshow/public/iStock-918508630.jpg?itok=NeS1xS39" class="card-img-top" alt="...">
+              <div class="card-img-top bg-info py-5 text-center text-light"><h1><i class="fa fa-chart-line"></i></h1></div>
               <div class="card-body">
-                <p class="card-text"><i class="fa fa-cog"></i>  Visualizar ação</p>
+                <p class="card-text font-weight-bolder">Visualizar ação</p>
                 <hr>
                 <p class="card-text">Visualizar informações sobre uma determinada ação, acompanhar o ritmo dela, bem como seu respectivo
                 gráfico dos últimos X dias, apenas digitando o código desta.</p>
-                <p class="card-text">Categoria: iniciante</p>
                 <hr>
                 <a href="/acoes/ELET3" class="card-link btn btn-primary">Experimentar</a>
               </div>
@@ -163,13 +145,12 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="card shadow my-3 servicos">
-              <img src="https://www.trsil.org/sites/default/files/styles/slideshow/public/iStock-918508630.jpg?itok=NeS1xS39" class="card-img-top" alt="...">
+              <div class="card-img-top bg-info py-5 text-center text-light"><h1><i class="fa fa-chart-area"></i></h1></div>
               <div class="card-body">
-                <p class="card-text"><i class="fa fa-cog"></i>  Comparar ações</p>
+                <p class="card-text font-weight-bolder">Comparar ações</p>
                 <hr>
                 <p class="card-text">Escolha 5 ações e o sistema gerará um gráfico comparativo com os dados destas ações. No gráfico, 
                 elas podem ser comparadas individualmente entre si.</p>
-                <p class="card-text">Categoria: intermediário</p>
                 <hr>
                 <a href="/lista" class="card-link btn btn-primary">Experimentar</a>
               </div>
@@ -179,15 +160,14 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="card shadow my-3 servicos">
-              <img src="https://www.trsil.org/sites/default/files/styles/slideshow/public/iStock-918508630.jpg?itok=NeS1xS39" class="card-img-top" alt="...">
+              <div class="card-img-top bg-info py-5 text-center text-light"><h1><i class="fa fa-list-ol"></i></h1></div>
               <div class="card-body">
-                <p class="card-text"><i class="fa fa-cog"></i>  Serviço 3</p>
+                <p class="card-text font-weight-bolder">Receber sugestões</p>
                 <hr>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p class="card-text">Categoria: intermediário</p>
+                <p class="card-text">Forneça algumas informações para traçar seu perfil e o sistema gerará uma lista de ações
+                 que mais se aplicam ao seu estilo, selecionadas com base nos dados passados.</p>
                 <hr>
-                <button class="card-link btn btn-primary">Experimentar</button>
+                <a href="/perfil" class="card-link btn btn-primary">Experimentar</a>
               </div>
             </div>
           </div>
@@ -195,45 +175,18 @@
 
           <div class="col-12 col-sm-6 col-md-3">
             <div class="card shadow my-3 servicos">
-              <img src="https://www.trsil.org/sites/default/files/styles/slideshow/public/iStock-918508630.jpg?itok=NeS1xS39" class="card-img-top" alt="...">
+              <div class="card-img-top bg-info py-5 text-center text-light"><h1><i class="fa fa-cog"></i></h1></div>
               <div class="card-body">
-                <p class="card-text"><i class="fa fa-cog"></i>  Serviço 4</p>
+                <p class="card-text font-weight-bolder">Serviço 4</p>
                 <hr>
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 								tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p class="card-text">Categoria: intermediário</p>
                 <hr>
                 <button class="card-link btn btn-primary">Experimentar</button>
               </div>
             </div>
           </div>
-
-
         </div>
-			</div>
-		</div>
-
-
-		<div id="qualidade" class="p-4">
-			<div class="row p-3">
-				<div class="col-12 col-md-6 p-4">
-					<h3>Lorem</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</div>
-				<div class="col-12 col-md-6 p-4">
-					<h3>Lorem</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				</div>
 			</div>
 		</div>
 
@@ -250,6 +203,7 @@
     <script src="{% static 'js/jquery.easing.min.js' %}"></script>
     <script src="{% static 'js/grayscale.min.js' %}"></script>
     <script src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" data-auto-replace-svg="nest"></script>
+
     <script type="text/javascript">
       jQuery(document).ready(function(){
         jQuery("#back-to-top").hide();

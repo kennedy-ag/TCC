@@ -215,3 +215,11 @@ def comparacao(request, dias=50):
 			controlador += 1
 
 	return render(request, 'comparativo.html', {'dados': lista_de_fechamentos, 'datas': lista_de_datas, 'dias': len(lista_de_datas), 'tickers': lista_de_acoes})
+
+
+def perfil(request):
+	return render(request, 'perfil.html')
+
+def sugestoes(request):
+	info = dict(request.GET)
+	return render(request, 'sugestoes.html', {'dados': info})

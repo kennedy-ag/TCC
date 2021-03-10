@@ -79,36 +79,27 @@
     var data = {
       labels: fdate.reverse(),
       datasets: [{
-        backgroundColor: utils.transparentize(presets.red),
         borderColor: presets.red,
         data: dados[0].reverse(),
         hidden: true,
         label: '{{tickers.0}}'
       }, {
-        backgroundColor: utils.transparentize(presets.orange),
         borderColor: presets.orange,
         data: dados[1].reverse(),
         label: '{{tickers.1}}',
-        fill: '-1'
       }, {
-        backgroundColor: utils.transparentize(presets.yellow),
         borderColor: presets.yellow,
         data: dados[2].reverse(),
         hidden: true,
         label: '{{tickers.2}}',
-        fill: 1
       }, {
-        backgroundColor: utils.transparentize(presets.green),
         borderColor: presets.green,
         data: dados[3].reverse(),
         label: '{{tickers.3}}',
-        fill: '-1'
       }, {
-        backgroundColor: utils.transparentize(presets.blue),
         borderColor: presets.blue,
         data: dados[4].reverse(),
         label: '{{tickers.4}}',
-        fill: '-1'
       }]
     };
 
