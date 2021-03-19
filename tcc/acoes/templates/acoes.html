@@ -89,7 +89,7 @@
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Valor mais recente ({{dados.ultimo}})</div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Valor ({{dados.ultimo}})</div>
                         <div class="row no-gutters align-items-center">
                           <div class="col-auto">
                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">R$ {{dados.fechamentos.0}}</div>
@@ -131,7 +131,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Resumo dos últimos {{dados.dias}} dias</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Resumo dos últimos {{dados.dias}} dias úteis</h6>
                     <div class="dropdown no-arrow">
                       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <p><i class="fa fa-clock"></i> Intervalo</p>
@@ -140,10 +140,10 @@
                         <div class="dropdown-header">Selecionar intervalo:</div>
                         <a class="dropdown-item" href="/acoes/{{dados.codigo}}/7">7 dias</a>
                         <a class="dropdown-item" href="/acoes/{{dados.codigo}}/15">15 dias</a>
-                        <a class="dropdown-item" href="/acoes/{{dados.codigo}}/30">30 dias</a>
-                        <a class="dropdown-item" href="/acoes/{{dados.codigo}}/45">45 dias</a>
-                        <a class="dropdown-item" href="/acoes/{{dados.codigo}}/60">60 dias</a>
-                        <a class="dropdown-item" href="/acoes/{{dados.codigo}}/100">100 dias</a>
+                        <a class="dropdown-item" href="/acoes/{{dados.codigo}}/20">1 mês</a>
+                        <a class="dropdown-item" href="/acoes/{{dados.codigo}}/40">2 meses</a>
+                        <a class="dropdown-item" href="/acoes/{{dados.codigo}}/120">6 meses</a>
+                        <a class="dropdown-item" href="/acoes/{{dados.codigo}}/245">1 ano</a>
                       </div>
                     </div>
                   </div>
@@ -165,7 +165,7 @@
                 <div class="card shadow mb-4">
                   <!-- Card Header - Dropdown -->
                   <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Outras informações relevantes</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Informações relevantes ({{dados.ultimo}})</h6>
                     
                   </div>
                   <!-- Card Body -->
@@ -174,7 +174,7 @@
                       <ul>
                         <li class="mb-3">
                           <span class="mr-2">
-                            <strong>Volume mais recente: </strong>{{dados.volumes.0}}
+                            <strong>Volume: </strong>{{dados.volumes.0}}
                           </span>
                         </li>
                         <li class="mb-3">
@@ -192,6 +192,11 @@
                             </i><strong>Baixa: </strong>{{dados.baixas.0}}
                           </span>
                         </li>
+                        <li class="mb-3">
+                          <span class="mr-2">
+                            </i><strong>Rendimento médio: </strong>{{dados.rendimento}}%
+                          </span>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -204,9 +209,6 @@
         </div>
         <!-- End of Main Content -->
 
-        <div class="footer bg-dark p-4">
-          <p>Copyright &copy; Kennedy e Leandro S.A. 2020 - <script>let now = new Date; document.write(now.getFullYear());</script>. Todos os direitos reservados.</p>
-        </div>
 
         <a id="back-to-top" href="#">^</a>
 

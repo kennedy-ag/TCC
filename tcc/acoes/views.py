@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Acao
 from datetime import date, timedelta
 from django.http import HttpRequest
+import numpy as np
 
 def index(request): 
     return render(request, 'index.html')
@@ -32,6 +33,11 @@ def acoes(request, codigo_da_acao, dias=25):
 			if(controlador_for==dias):
 				break
 
+		media = np.mean(dados['fechamentos'])
+		recente = dados['fechamentos'][0]
+		rendimento = round(((recente/media)*100)-100, 2)
+
+		dados['rendimento'] = rendimento
 		dados['codigo'] = codigo_da_acao
 		dados['ultimo'] = dados['datas'][0]
 		dados['empresa'] = i.empresa
@@ -222,4 +228,142 @@ def perfil(request):
 
 def sugestoes(request):
 	info = dict(request.GET)
-	return render(request, 'sugestoes.html', {'dados': info})
+	acoes = Acao.objects.all()
+	lista_de_tickers = []
+	fechamentos = []
+	tabela = {}
+	aux = 1
+	valor = int(info['valor'][0])
+	meses = int(info['meses'][0])
+	possui = int(info['possui'][0])
+	precisa = 100 - round((possui/valor)*100, 2)
+
+	for i in acoes:
+		if(i.codigo not in lista_de_tickers):
+			lista_de_tickers.append(i.codigo)
+
+	for i in lista_de_tickers:
+		acao = Acao.objects.filter(codigo=i)
+		acao = list(acao)
+		acao.reverse()
+
+		for i in range(0, 70):
+			fechamentos.append(acao[i].fechamento)
+
+		media = np.mean(fechamentos)
+		recente = fechamentos[0]
+		rendimento = round(((recente/media)*100)-100, 2)
+		fechamentos = []
+		acao = acao[0]
+
+		if(meses>=24):
+			if(precisa>=50):
+				if(possui>=2000):
+					if(rendimento<=15 and rendimento>=5 and acao.fechamento>70):
+						tabela[acao.codigo] = {
+							'empresa': acao.empresa,
+							'fechamento': acao.fechamento,
+							'rendimento': rendimento
+						}
+				else:
+					if(rendimento<=15 and rendimento>=5 and acao.fechamento>=10 and acao.fechamento<=40):
+						tabela[acao.codigo] = {
+							'empresa': acao.empresa,
+							'fechamento': acao.fechamento,
+							'rendimento': rendimento
+						}
+			else:
+				if(rendimento<=18 and rendimento>=8 and acao.fechamento>10 and acao.fechamento<=70):
+					tabela[acao.codigo] = {
+						'empresa': acao.empresa,
+						'fechamento': acao.fechamento,
+						'rendimento': rendimento
+					}
+
+
+		elif(meses<=12):
+			if(precisa>=50):
+				if(possui>=2000):
+					if(rendimento>=20 and acao.fechamento>70):
+						tabela[acao.codigo] = {
+							'empresa': acao.empresa,
+							'fechamento': acao.fechamento,
+							'rendimento': rendimento
+						}
+				else:
+					if(rendimento>=20 and acao.fechamento>=20 and acao.fechamento<=40):
+						tabela[acao.codigo] = {
+							'empresa': acao.empresa,
+							'fechamento': acao.fechamento,
+							'rendimento': rendimento
+						}
+			else:
+				if(rendimento>=20 and acao.fechamento>10 and acao.fechamento<=70):
+					tabela[acao.codigo] = {
+						'empresa': acao.empresa,
+						'fechamento': acao.fechamento,
+						'rendimento': rendimento
+					}
+
+
+		else:
+			if(precisa>=50):
+				if(possui>=2000):
+					if(rendimento>10 and rendimento<20 and acao.fechamento>50):
+						tabela[acao.codigo] = {
+							'empresa': acao.empresa,
+							'fechamento': acao.fechamento,
+							'rendimento': rendimento
+						}
+				else:
+					if(rendimento>10 and rendimento<20 and acao.fechamento>=20 and acao.fechamento<=40):
+						tabela[acao.codigo] = {
+							'empresa': acao.empresa,
+							'fechamento': acao.fechamento,
+							'rendimento': rendimento
+						}
+			else:
+				if(rendimento<=18 and rendimento>=8 and acao.fechamento>10 and acao.fechamento<=70):
+					tabela[acao.codigo] = {
+						'empresa': acao.empresa,
+						'fechamento': acao.fechamento,
+						'rendimento': rendimento
+					}
+
+		aux += 1
+
+	return render(request, 'sugestoes.html', {'tabela': tabela, 'dados': info})
+
+
+def queda(request):
+	acoes = Acao.objects.all()
+	lista_de_tickers = []
+	fechamentos = []
+	queda = {}
+
+	for i in acoes:
+		if(i.codigo not in lista_de_tickers):
+			lista_de_tickers.append(i.codigo)
+
+	for i in lista_de_tickers:
+		acao = Acao.objects.filter(codigo=i)
+		acao = list(acao)
+		acao.reverse()
+
+		for i in range(0, 50):
+			fechamentos.append(acao[i].fechamento)
+
+		media = np.mean(fechamentos)
+		recente = fechamentos[0]
+		rendimento = round(((recente/media)*100)-100, 2)
+		fechamentos = []
+		acao = acao[0]
+
+		if(rendimento<0):
+			queda[acao.codigo] = {
+				'empresa': acao.empresa,
+				'fechamento': acao.fechamento,
+				'rendimento': rendimento
+			}
+
+	return render(request, 'queda.html', {'queda': queda})

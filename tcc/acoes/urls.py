@@ -12,4 +12,5 @@ urlpatterns = [
     path('compare/<int:dias>', views.comparacao),
     path('sugestoes', views.sugestoes),
     path('perfil', views.perfil),
+    path('queda', views.queda),
 ]

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Introdução</title>
+    <title>Técnicas</title>
   </head>
   <body style="margin-top: 76px;">
     
@@ -28,6 +28,95 @@
         </ul>
       </div>
     </nav>
+
+
+   <div class="container">
+      <ul class="nav nav-pills mb-3" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#pills-intro" type="button" role="tab" aria-controls="pills-intro" aria-selected="true">Introdução</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-tf" type="button" role="tab" aria-controls="pills-tf" aria-selected="false">Topos e fundos</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-sr" type="button" role="tab" aria-controls="pills-sr" aria-selected="false">Suporte e resistência</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-co" type="button" role="tab" aria-controls="pills-co" aria-selected="false">Cabeça e ombros</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-end" type="button" role="tab" aria-controls="pills-end" aria-selected="false">Finalizando</button>
+        </li>
+      </ul>
+      <hr>
+      <div class="tab-content">
+        <div class="tab-pane fade show active p-3" id="pills-intro" role="tabpanel">
+          <p>A análise técnica ou análise gráfica pode ser conceituada como uma estratégia
+          cuja a finalidade é estimar a tendência de mercado, levando em consideração as variações
+          de preço de um ativo ao longo de um determinado tempo e com isso poder criar gráficos
+          que permitam estudar e entender como o valor desse ativo se comportará futuramente,
+          utilizando indicadores que sinalizam qual o momento ideal para fazer a compra ou a
+          venda dele.</p>
+          <p>Mas quais as técnicas utilizadas para analisar de gráficos de ações para que se possa obter
+          sucesso em suas operações se antecipando, ao perceber as variações de preço de um ativo?</p>
+          <p>Bom, por incrível que pareça, uma das técnicas mais interessantes é levar em
+          consideração os conceitos mais básicos dentro da análise gráfica, pois dele, se extrai
+          muitos resultados positivos. Algumas dessas técnicas são: os topos, os fundos resistência
+          e suporte, linhas de tendências, padrão de cabeça e ombros, entre outras.</p>
+        </div>
+
+        <div class="tab-pane fade" id="pills-tf" role="tabpanel">
+          <p>
+            Topos e fundos identificam quais são as tendencias de mercado e são pontos extremos
+            um ao outro. Um ponto mais alto do movimento de alta precedente de um ponto de baixa
+            é chamado de Topo. E um ponto mais baixo, perto de um movimento de baixa precedente
+            de um movimento de alta, é chamado de Fundo. Essa técnica nos permite enxergar
+            algumas figuras de reversão e tomar decisões baseadas nelas. Por exemplo, levando em
+            consideração o tamanho dos topos e fundos, é possível estimar que pode haver uma
+            repetição desse tamanho futuramente, então com essa estratégia, você sabe onde comprar
+            e até onde esse movimento pode ir. 
+          </p>
+          <h2 class="my-4">Exemplo:</h2>
+          <img class="img-fluid rounded d-flex mx-auto" src="{% static 'img/tf.png' %}">
+        </div>
+
+        <div class="tab-pane fade" id="pills-sr" role="tabpanel">
+          <p>
+            Se tratando do suporte e resistência, uma linha de suporte, significa um preço que o
+            mercado bateu várias vezes, mas não conseguiu ultrapassar, ou seja, ele segura esse preço,
+            não permitindo que ele caia. Já a resistência é uma linha onde o mercado tem uma certa
+            dificuldade de passar, ele bate várias vezes, mas as pessoas acreditam que o mercado está
+            caro e começam a vender, fazendo com que o mercado caia. 
+          </p>
+          <h2 class="my-4">Exemplo:</h2>
+          <img class="img-fluid rounded d-flex mx-auto" src="{% static 'img/sr.png' %}">
+        </div>
+
+        <div class="tab-pane fade" id="pills-co" role="tabpanel">
+          <p>
+            Outra técnica de análise gráfica que é considerada muito confiável é o padrão de cabeça
+            e ombros. Esse padrão consiste em indicar as mudanças de trajetórias, sendo assim,
+            dependendo da formação do gráfico, é possível perceber que a atual tendência pode
+            registrar uma mudança. Existem dois tipos de padrões cabeça e ombros, o teto de cabeça
+            e ombros, que é formado no topo de uma tendência que está subindo, indicando que o
+            preço pode cair, no momento em que o padrão se completa. E o outro tipo é o base de
+            cabeça e ombros, é formado durante uma tendência de baixa, o que indica que o preço
+            pode subir. 
+          </p>
+          <h2 class="my-4">Exemplo:</h2>
+          <img class="img-fluid rounded d-flex mx-auto" src="{% static 'img/co.png' %}">
+        </div>
+
+        <div class="tab-pane fade" id="pills-end" role="tabpanel">
+          <p>
+            Como já dito, com essas ferramentas de análise, é possível esclarecer algumas
+            informações do mercado com exatidão, podendo entender como serão as tendências
+            futuras, podendo elas estarem subindo, caindo ou laterizado. 
+          </p>
+        </div>
+      </div>
+      <hr>
+   </div>
 
 
     
